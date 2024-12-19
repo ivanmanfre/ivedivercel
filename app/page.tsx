@@ -1,28 +1,19 @@
 "use client"
 import { useState, useEffect } from 'react'
-import { Button } from "../components/ui/button"
-import { Card } from "../components/ui/card"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../components/ui/accordion"
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import Link from "next/link"
 import { Inter } from 'next/font/google'
 import { Check, BarChart3, Users, Bot, LayoutGrid, FileText, CheckCircle2, Instagram, MessageSquare, Mail, Database, Share2, ChevronLeft, ChevronRight, Search, Star, Calendar, ArrowRight, Zap, Target, Cog, BarChart, PieChart, ArrowUpRight, DollarSign, Clock, TrendingUp, XCircle, Building2, CheckCircle } from 'lucide-react'
-import MobileMenu from '../components/mobile-menu'
-
-type CaseStudy = {
-  title: string;
-  name: string;
-  role: string;
-  description: string;
-  result: string;
-  rating: number;
-  image: string;
-};
+import MobileMenu from '@/components/mobile-menu'
+import Head from 'next/head'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [currentCase, setCurrentCase] = useState(0);
-  const cases: CaseStudy[] = [
+  const cases = [
     {
       title: "Clínica Dental Sonrisas",
       name: "Dr. María González",
@@ -52,11 +43,11 @@ export default function Home() {
     }
   ];
 
-  const nextCase = (): void => {
+  const nextCase = () => {
     setCurrentCase((prev) => (prev + 1) % cases.length);
   };
 
-  const prevCase = (): void => {
+  const prevCase = () => {
     setCurrentCase((prev) => (prev - 1 + cases.length) % cases.length);
   };
 
@@ -65,10 +56,15 @@ export default function Home() {
       nextCase();
     }, 5000);
     return () => clearInterval(interval);
-  }, [nextCase]);
+  }, []);
 
   return (
-    <div className={`min-h-screen bg-gradient-to-b from-pink-50 to-white ${inter.className}`}>
+    <>
+      <Head>
+        <title>IVEDI - Agencia de Marketing para Profesionales de la Salud</title>
+        <meta name="description" content="Transforma tu práctica médica con soluciones de marketing digital inteligentes y automatizadas. Atrae y retén más pacientes con IVEDI." />
+      </Head>
+      <div className={`min-h-screen bg-gradient-to-b from-pink-50 to-white `}>
       <nav className="sticky top-0 z-50 bg-gradient-to-r from-pink-600 to-pink-500 text-white shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -114,7 +110,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button className="bg-pink-600 text-white hover:bg-pink-700 text-base font-semibold px-6 py-3 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
-                  Comienza Ahora
+                  Solicitar Demo Gratuita
                 </Button>
                 <Button variant="outline" className="bg-white text-pink-600 hover:bg-pink-50 border-pink-600 text-base font-semibold px-6 py-3 rounded-full transition duration-300 ease-in-out">
                   Ver Casos de Éxito
@@ -320,7 +316,7 @@ export default function Home() {
 
                     <div className="flex justify-center items-center space-x-1 mb-6">
                       {[...Array(caseStudy.rating)].map((_, i) => (
-                        <Star key={`star-${index}-${i}`} className="w-6 h-6 fill-pink-500 text-pink-500" />
+                        <Star key={i} className="w-6 h-6 fill-pink-500 text-pink-500" />
                       ))}
                     </div>
 
@@ -582,7 +578,7 @@ export default function Home() {
                 <li><Link href="#" className="hover:text-pink-400 transition duration-300">Campañas de Ads</Link></li>
                 <li><Link href="#" className="hover:text-pink-400 transition duration-300">Asistente Virtual IA</Link></li>
                 <li><Link href="#" className="hover:text-pink-400 transition duration-300">Automatización de Marketing</Link></li>
-                <li><Link href="#" className="hover:text-pink-400 transition duration-300">Gestión de Redes Sociales</Link></li>
+                <li><Link href="#" className="hover:textpink-400 transition duration-300">Gestión de Redes Sociales</Link></li>
               </ul>
             </div>
             <div>
@@ -621,7 +617,8 @@ export default function Home() {
           </div>
         </div>
       </footer>
-    </div>
+      </div>
+    </>
   )
 }
 

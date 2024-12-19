@@ -1,9 +1,9 @@
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import { Calendar, User, Tag, ChevronLeft } from 'lucide-react'
-import { Button } from "../../../components/ui/button"
-import { BlogPost } from '../../../types/blog'
-import { getBlogPost } from '../../../utils/markdown'
+import { Button } from "@/components/ui/button"
+import { BlogPost } from '@/types/blog'
+import { getBlogPost } from '@/utils/markdown'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,17 +29,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <Link href="/" className="flex-shrink-0">
               <span className="text-2xl font-bold">IVADI</span>
             </Link>
-            <div className="hidden md:flex space-x-4">
-              <Link href="/#casos-de-estudio" className="text-white hover:text-pink-200 transition duration-150 ease-in-out">
-                Casos de Estudio
-              </Link>
-              <Link href="/#cómo-funciona" className="text-white hover:text-pink-200 transition duration-150 ease-in-out">
-                Cómo Funciona
-              </Link>
-              <Link href="/#servicios" className="text-white hover:text-pink-200 transition duration-150 ease-in-out">
-                Servicios
-              </Link>
-              <Link href="/blog" className="text-white hover:text-pink-200 transition duration-150 ease-in-out">
+            <div className="hidden md:flex ml-10">
+              <Link href="/blog" className="text-white hover:text-pink-200 px-3 py-2 text-sm font-medium transition duration-150 ease-in-out">
                 Blog
               </Link>
             </div>
@@ -68,7 +59,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
             {post.title}
           </h1>
-
+          
           <div className="flex flex-wrap gap-4 text-gray-600">
             <div className="flex items-center">
               <Calendar className="w-5 h-5 mr-2 text-pink-500" />
@@ -95,7 +86,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           )}
         </header>
 
-        <div
+        <div 
           className="prose prose-pink max-w-none"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
