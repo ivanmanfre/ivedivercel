@@ -56,15 +56,10 @@ export default function Home() {
       nextCase();
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  });
 
   return (
-    <>
-      <Head>
-        <title>IVEDI - Agencia de Marketing para Profesionales de la Salud</title>
-        <meta name="description" content="Transforma tu práctica médica con soluciones de marketing digital inteligentes y automatizadas. Atrae y retén más pacientes con IVEDI." />
-      </Head>
-      <div className={`min-h-screen bg-gradient-to-b from-pink-50 to-white ${inter.className}`}>
+    <div className={`min-h-screen bg-gradient-to-b from-pink-50 to-white ${inter.className}`}>
       <nav className="sticky top-0 z-50 bg-gradient-to-r from-pink-600 to-pink-500 text-white shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -584,7 +579,7 @@ export default function Home() {
             <div>
               <h3 className="text-pink-400 font-semibold mb-4">Recursos</h3>
               <ul className="space-y-2">
-                <li><Link href="#" className="hover:text-pink-400 transition duration-300">Blog</Link></li>
+                <li><Link href="#" className="hover:text-pink400 transition duration-300">Blog</Link></li>
                 <li><Link href="#" className="hover:text-pink-400 transition duration-300">Casos de Estudio</Link></li>
                 <li><Link href="#" className="hover:text-pink-400 transition duration-300">Guías Gratuitas</Link></li>
                 <li><Link href="#" className="hover:text-pink-400 transition duration-300">Webinars</Link></li>
@@ -617,8 +612,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
-      </div>
-    </>
+    </div>
   )
 }
 
