@@ -1,11 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // Remove static export configuration
+  // output: 'export',
   images: {
-    unoptimized: true,
+    domains: ['hebbkx1anhila5yf.public.blob.vercel-storage.com'],
   },
-  assetPrefix: '/',
-  trailingSlash: true,
+  // Remove GitHub Pages specific configurations
+  // assetPrefix: '/',
+  // trailingSlash: true,
 }
 
 module.exports = nextConfig
