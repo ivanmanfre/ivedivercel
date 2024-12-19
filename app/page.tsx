@@ -64,7 +64,7 @@ export default function Home() {
         <title>IVEDI - Agencia de Marketing para Profesionales de la Salud</title>
         <meta name="description" content="Transforma tu práctica médica con soluciones de marketing digital inteligentes y automatizadas. Atrae y retén más pacientes con IVEDI." />
       </Head>
-      <div className={`min-h-screen bg-gradient-to-b from-pink-50 to-white `}>
+      <div className={`min-h-screen bg-gradient-to-b from-pink-50 to-white ${inter.className}`}>
       <nav className="sticky top-0 z-50 bg-gradient-to-r from-pink-600 to-pink-500 text-white shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -578,7 +578,7 @@ export default function Home() {
                 <li><Link href="#" className="hover:text-pink-400 transition duration-300">Campañas de Ads</Link></li>
                 <li><Link href="#" className="hover:text-pink-400 transition duration-300">Asistente Virtual IA</Link></li>
                 <li><Link href="#" className="hover:text-pink-400 transition duration-300">Automatización de Marketing</Link></li>
-                <li><Link href="#" className="hover:textpink-400 transition duration-300">Gestión de Redes Sociales</li>
+                <li><Link href="#" className="hover:textpink-400 transition duration-300">Gestiónde Redes Sociales</li>
               </ul>
             </div>
             <div>
