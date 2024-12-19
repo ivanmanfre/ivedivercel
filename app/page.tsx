@@ -7,13 +7,22 @@ import Link from "next/link"
 import { Inter } from 'next/font/google'
 import { Check, BarChart3, Users, Bot, LayoutGrid, FileText, CheckCircle2, Instagram, MessageSquare, Mail, Database, Share2, ChevronLeft, ChevronRight, Search, Star, Calendar, ArrowRight, Zap, Target, Cog, BarChart, PieChart, ArrowUpRight, DollarSign, Clock, TrendingUp, XCircle, Building2, CheckCircle } from 'lucide-react'
 import MobileMenu from '../components/mobile-menu'
-import Head from 'next/head'
+
+type CaseStudy = {
+  title: string;
+  name: string;
+  role: string;
+  description: string;
+  result: string;
+  rating: number;
+  image: string;
+};
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [currentCase, setCurrentCase] = useState(0);
-  const cases = [
+  const cases: CaseStudy[] = [
     {
       title: "Clínica Dental Sonrisas",
       name: "Dr. María González",
@@ -43,11 +52,11 @@ export default function Home() {
     }
   ];
 
-  const nextCase = () => {
+  const nextCase = (): void => {
     setCurrentCase((prev) => (prev + 1) % cases.length);
   };
 
-  const prevCase = () => {
+  const prevCase = (): void => {
     setCurrentCase((prev) => (prev - 1 + cases.length) % cases.length);
   };
 
@@ -56,7 +65,7 @@ export default function Home() {
       nextCase();
     }, 5000);
     return () => clearInterval(interval);
-  });
+  }, [nextCase]);
 
   return (
     <div className={`min-h-screen bg-gradient-to-b from-pink-50 to-white ${inter.className}`}>
@@ -311,7 +320,7 @@ export default function Home() {
 
                     <div className="flex justify-center items-center space-x-1 mb-6">
                       {[...Array(caseStudy.rating)].map((_, i) => (
-                        <Star key={i} className="w-6 h-6 fill-pink-500 text-pink-500" />
+                        <Star key={`star-${index}-${i}`} className="w-6 h-6 fill-pink-500 text-pink-500" />
                       ))}
                     </div>
 
@@ -573,13 +582,13 @@ export default function Home() {
                 <li><Link href="#" className="hover:text-pink-400 transition duration-300">Campañas de Ads</Link></li>
                 <li><Link href="#" className="hover:text-pink-400 transition duration-300">Asistente Virtual IA</Link></li>
                 <li><Link href="#" className="hover:text-pink-400 transition duration-300">Automatización de Marketing</Link></li>
-                <li><Link href="#" className="hover:textpink-400 transition duration-300">Gestiónde Redes Sociales</li>
+                <li><Link href="#" className="hover:text-pink-400 transition duration-300">Gestión de Redes Sociales</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="text-pink-400 font-semibold mb-4">Recursos</h3>
               <ul className="space-y-2">
-                <li><Link href="#" className="hover:text-pink400 transition duration-300">Blog</Link></li>
+                <li><Link href="#" className="hover:text-pink-400 transition duration-300">Blog</Link></li>
                 <li><Link href="#" className="hover:text-pink-400 transition duration-300">Casos de Estudio</Link></li>
                 <li><Link href="#" className="hover:text-pink-400 transition duration-300">Guías Gratuitas</Link></li>
                 <li><Link href="#" className="hover:text-pink-400 transition duration-300">Webinars</Link></li>
