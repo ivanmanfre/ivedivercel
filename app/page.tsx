@@ -1,12 +1,12 @@
 "use client"
 import { useState, useEffect } from 'react'
-import { Button } from "../components/ui/button"
-import { Card } from "../components/ui/card"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../components/ui/accordion"
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import Link from "next/link"
 import { Inter } from 'next/font/google'
 import { Check, BarChart3, Users, Bot, LayoutGrid, FileText, CheckCircle2, Instagram, MessageSquare, Mail, Database, Share2, ChevronLeft, ChevronRight, Search, Star, Calendar, ArrowRight, Zap, Target, Cog, BarChart, PieChart, ArrowUpRight, DollarSign, Clock, TrendingUp, XCircle, Building2, CheckCircle } from 'lucide-react'
-import MobileMenu from '../components/ui/mobile-menu'
+import MobileMenu from '@/components/mobile-menu'
 import Head from 'next/head'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -74,21 +74,11 @@ export default function Home() {
               </div>
               <div className="hidden md:flex ml-10">
                 <div className="flex space-x-4">
-                  {[
-  { name: "Blog", href: "/blog" },
-  { name: "Casos de Estudio", href: "#casos-de-estudio" },
-  { name: "Cómo Funciona", href: "#cómo-funciona" },
-  { name: "Servicios", href: "#servicios" },
-  { name: "FAQ", href: "#faq" }
-].map((item) => (
-  <Link 
-    key={item.name} 
-    href={item.href} 
-    className="text-white hover:text-pink-200 px-3 py-2 text-sm font-medium transition duration-150 ease-in-out"
-  >
-    {item.name}
-  </Link>
-))}
+                  {["Blog", "Casos de Estudio", "Cómo Funciona", "Sobre Nosotros"].map((item) => (
+                    <Link key={item} href="#" className="text-white hover:text-pink-200 px-3 py-2 text-sm font-medium transition duration-150 ease-in-out">
+                      {item}
+                    </Link>
+                  ))}
                 </div>
               </div>
             </div>
@@ -152,7 +142,7 @@ export default function Home() {
       </main>
 
       {/* How it Works Section - Improved */}
-      <section id="cómo-funciona" className="py-24 bg-gradient-to-b from-white to-pink-50">
+      <section className="py-24 bg-gradient-to-b from-white to-pink-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="text-sm font-medium text-pink-600 mb-4 uppercase tracking-wider">
@@ -202,12 +192,12 @@ export default function Home() {
               }
             ].map((step, index) => (
               <div key={index} className={`relative flex items-center mb-16 ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
-                <div className={`absolute left-1/2 transform -translate-x-1/2 ${step.color} rounded-full p-3 z-10`}>
+                <div className={`absolute left-1/2 transform -translate-x-1/2 ${step.color} rounded-full p-2 z-10`}>
                   {step.icon}
                 </div>
                 <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
-                  <div className="bg-white rounded-lg shadow-lg p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
-                    <h3 className="text-xl font-bold mb-3 text-gray-900">{step.title}</h3>
+                  <div className="bg-white rounded-lg shadow-lg p-6 transform transition-all duration-300 hover:scale-105">
+                    <h3 className="text-xl font-bold mb-2 text-gray-900">{step.title}</h3>
                     <p className="text-gray-600">{step.description}</p>
                   </div>
                 </div>
@@ -218,7 +208,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="servicios" className="py-24 bg-gradient-to-b from-pink-50 to-white">
+      <section className="py-24 bg-gradient-to-b from-pink-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="text-sm font-medium text-pink-600 mb-4 uppercase tracking-wider">
@@ -263,6 +253,12 @@ export default function Home() {
                 title: "CRM Personalizado",
                 description: "Seguimiento detallado de leads y pacientes en un CRM personalizado para profesionales de la salud, integrado con ClickUp.",
                 color: "bg-red-100 text-red-600"
+              },
+              {
+                icon: <Share2 className="h-12 w-12" />,
+                title: "Gestión de Redes Sociales",
+                description: "Desarrollo y gestión de contenido atractivo y educativo para aumentar el engagement y la confianza de los pacientes en tus redes sociales.",
+                color: "bg-indigo-100 text-indigo-600"
               }
             ].map((service, index) => (
               <div key={index} className="bg-white rounded-xl border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
@@ -287,7 +283,7 @@ export default function Home() {
       </section>
 
       {/* Case Studies Carousel */}
-      <section id="casos-de-estudio" className="py-24 bg-gradient-to-b from-pink-50 to-white overflow-hidden">
+      <section className="py-24 bg-gradient-to-b from-pink-50 to-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="text-sm font-medium text-pink-600 mb-4 uppercase tracking-wider">
@@ -502,7 +498,7 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-24 bg-gradient-to-b from-pink-50 to-white">
+      <section className="py-24 bg-gradient-to-b from-pink-50 to-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="text-sm font-medium text-pink-600 mb-4 uppercase tracking-wider">
@@ -542,7 +538,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section - Improved */}
+      {/* CTA Section */}
       <section className="py-24 bg-gradient-to-r from-pink-600 to-pink-500 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 text-center">
@@ -581,19 +577,26 @@ export default function Home() {
               <ul className="space-y-2">
                 <li><Link href="#" className="hover:text-pink-400 transition duration-300">Campañas de Ads</Link></li>
                 <li><Link href="#" className="hover:text-pink-400 transition duration-300">Asistente Virtual IA</Link></li>
-                <li><Link href="#" className="hover:text-pink-400 transition duration-300">Automatización de Marketing</Link</li>
-              </ul></div>
+                <li><Link href="#" className="hover:text-pink-400 transition duration-300">Automatización de Marketing</Link></li>
+                <li><Link href="#" className="hover:textpink-400 transition duration-300">Gestión de Redes Sociales</Link></li>
+              </ul>
+            </div>
             <div>
               <h3 className="text-pink-400 font-semibold mb-4">Recursos</h3>
               <ul className="space-y-2">
                 <li><Link href="#" className="hover:text-pink-400 transition duration-300">Blog</Link></li>
                 <li><Link href="#" className="hover:text-pink-400 transition duration-300">Casos de Estudio</Link></li>
                 <li><Link href="#" className="hover:text-pink-400 transition duration-300">Guías Gratuitas</Link></li>
+                <li><Link href="#" className="hover:text-pink-400 transition duration-300">Webinars</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="text-pink-400 font-semibold mb-4">Contacto</h3>
-              <p>Email: info@ivadi.com</p>
+              <ul className="space-y-2">
+                <li>Email: info@IVEDI.com</li>
+                <li>Teléfono: +34 900 123 456</li>
+                <li>Dirección: Calle Principal 123, Madrid, España</li>
+              </ul>
             </div>
           </div>
 

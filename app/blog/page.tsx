@@ -1,10 +1,8 @@
 import Link from 'next/link'
 import { Inter } from 'next/font/google'
-import { getAllBlogPosts } from '/utils/markdown'
-import { BlogPost } from '/types/blog'
+import { getAllBlogPosts } from '@/utils/markdown'
+import { BlogPost } from '@/types/blog'
 import { Twitter } from 'lucide-react';
-import { Button } from "/components/ui/button"
-import MobileMenu from '/components/ui/mobile-menu'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,37 +14,20 @@ export default async function BlogPage() {
       <nav className="sticky top-0 z-50 bg-gradient-to-r from-pink-600 to-pink-500 text-white shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <Link href="/" className="text-2xl font-bold">IVEDI</Link>
-              </div>
-              <div className="hidden md:flex ml-10">
-                <div className="flex space-x-4">
-                  {[
-                    { name: "Blog", href: "/blog" },
-                    { name: "Casos de Estudio", href: "/#casos-de-estudio" },
-                    { name: "Cómo Funciona", href: "/#cómo-funciona" },
-                    { name: "Servicios", href: "/#servicios" },
-                    { name: "FAQ", href: "/#faq" }
-                  ].map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="text-white hover:text-pink-200 px-3 py-2 text-sm font-medium transition duration-150 ease-in-out"
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="hidden md:block">
-              <Button className="bg-white text-pink-600 hover:bg-pink-100 text-sm font-medium px-4 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
-                Contacto
-              </Button>
-            </div>
-            <div className="md:hidden">
-              <MobileMenu />
+            <Link href="/" className="text-2xl font-bold">IVADI</Link>
+            <div className="flex space-x-4">
+              <Link href="/#casos-de-estudio" className="text-white hover:text-pink-200 transition duration-150 ease-in-out">
+                Casos de Estudio
+              </Link>
+              <Link href="/#cómo-funciona" className="text-white hover:text-pink-200 transition duration-150 ease-in-out">
+                Cómo Funciona
+              </Link>
+              <Link href="/#servicios" className="text-white hover:text-pink-200 transition duration-150 ease-in-out">
+                Servicios
+              </Link>
+              <Link href="/blog" className="text-white hover:text-pink-200 transition duration-150 ease-in-out">
+                Blog
+              </Link>
             </div>
           </div>
         </div>
@@ -89,7 +70,6 @@ export default async function BlogPage() {
           <li><Link href="/#casos-de-estudio" className="hover:text-pink-400 transition duration-300">Casos de Estudio</Link></li>
           <li><Link href="/#cómo-funciona" className="hover:text-pink-400 transition duration-300">Cómo Funciona</Link></li>
           <li><Link href="/#servicios" className="hover:text-pink-400 transition duration-300">Servicios</Link></li>
-          <li><Link href="/#faq" className="hover:text-pink-400 transition duration-300">FAQ</Link></li>
           <li><Link href="/blog" className="hover:text-pink-400 transition duration-300">Blog</Link></li>
         </ul>
       </div>
