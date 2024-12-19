@@ -4,6 +4,7 @@ import { Calendar, User, Tag, ChevronLeft } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { BlogPost } from '@/types/blog'
 import { getBlogPost } from '@/utils/markdown'
+import MobileMenu from '@/components/ui/mobile-menu'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,13 +27,37 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <nav className="sticky top-0 z-50 bg-gradient-to-r from-pink-600 to-pink-500 text-white shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex-shrink-0">
-              <span className="text-2xl font-bold">IVADI</span>
-            </Link>
-            <div className="hidden md:flex ml-10">
-              <Link href="/blog" className="text-white hover:text-pink-200 px-3 py-2 text-sm font-medium transition duration-150 ease-in-out">
-                Blog
-              </Link>
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+                <Link href="/" className="text-2xl font-bold">IVEDI</Link>
+              </div>
+              <div className="hidden md:flex ml-10">
+                <div className="flex space-x-4">
+                  {[
+                    { name: "Blog", href: "/blog" },
+                    { name: "Casos de Estudio", href: "/#casos-de-estudio" },
+                    { name: "Cómo Funciona", href: "/#cómo-funciona" },
+                    { name: "Servicios", href: "/#servicios" },
+                    { name: "FAQ", href: "/#faq" }
+                  ].map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="text-white hover:text-pink-200 px-3 py-2 text-sm font-medium transition duration-150 ease-in-out"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="hidden md:block">
+              <Button className="bg-white text-pink-600 hover:bg-pink-100 text-sm font-medium px-4 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
+                Contacto
+              </Button>
+            </div>
+            <div className="md:hidden">
+              <MobileMenu />
             </div>
           </div>
         </div>
@@ -59,7 +84,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
             {post.title}
           </h1>
-          
+
           <div className="flex flex-wrap gap-4 text-gray-600">
             <div className="flex items-center">
               <Calendar className="w-5 h-5 mr-2 text-pink-500" />
@@ -86,7 +111,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           )}
         </header>
 
-        <div 
+        <div
           className="prose prose-pink max-w-none"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
