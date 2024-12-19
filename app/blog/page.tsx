@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import { Inter } from 'next/font/google'
-import { getAllBlogPosts } from '@/utils/markdown'
-import { BlogPost } from '@/types/blog'
+import { getAllBlogPosts } from '/utils/markdown'
+import { BlogPost } from '/types/blog'
 import { Twitter } from 'lucide-react';
-import { Button } from "@/components/ui/button"
-import MobileMenu from '@/components/ui/mobile-menu'
+import { Button } from "/components/ui/button"
+import MobileMenu from '/components/ui/mobile-menu'
 
 const inter = Inter({ subsets: ['latin'] })
 
